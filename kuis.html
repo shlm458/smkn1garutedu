@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Interaktif — EduSchool</title>
+  <meta name="description" content="Sistem kuis interaktif dengan timer, penilaian otomatis, ulasan pembahasan, dan manajemen bank soal.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <div class="app-main">
+      <header class="app-topbar" id="app-topbar"></header>
+
+      <main class="app-content">
+        <!-- Header Halaman -->
+        <div style="margin-bottom: 24px;">
+          <h1 style="font-size: 1.8rem; margin-bottom: 4px;">Evaluasi Kuis Interaktif</h1>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Uji pemahaman komprehensif konsep komputasi, algoritma, pemrograman dasar, dan logika komputer.
+          </p>
+        </div>
+
+        <!-- Tab Bar Navigasi Kuis -->
+        <div class="tab-nav" id="quiz-tab-nav">
+          <!-- Rendered via quiz.js -->
+        </div>
+
+        <!-- View 1: Taker / Runner Kuis -->
+        <div id="quiz-view-taker">
+          <div id="quiz-runner-container">
+            <!-- Rendered via quiz.js -->
+          </div>
+        </div>
+
+        <!-- View 2: Riwayat Siswa -->
+        <div id="quiz-view-history" style="display: none;">
+          <div id="quiz-history-container">
+            <!-- Rendered via quiz.js -->
+          </div>
+        </div>
+
+        <!-- View 3: Guru - Kelola Kuis & Soal -->
+        <div id="quiz-view-manage" style="display: none;">
+          <div id="teacher-manage-container">
+            <!-- Rendered via quiz.js -->
+          </div>
+        </div>
+
+        <!-- View 4: Guru - Rekap Hasil Seluruh Siswa -->
+        <div id="quiz-view-results" style="display: none;">
+          <div id="teacher-results-container">
+            <!-- Rendered via quiz.js -->
+          </div>
+        </div>
+
+      </main>
+
+      <footer class="app-footer">
+        <div>&copy; 2024 EduSchool — Sistem Evaluasi Pembelajaran Digital</div>
+        <div class="app-footer-links">
+          <a href="materi.html">Materi</a>
+          <a href="nilai.html">Nilai</a>
+          <a href="absensi.html">Absensi</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal Tambah / Edit Butir Soal (Guru) -->
+  <div class="modal-backdrop" id="modal-question-form">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-q-title">Kelola Butir Soal Kuis</div>
+        <button class="modal-close" onclick="closeModal('modal-question-form')">✕</button>
+      </div>
+      <form onsubmit="QuizEngine.saveQuestionForm(event)">
+        <div class="modal-body">
+          <input type="hidden" id="form-q-id">
+
+          <div class="form-group">
+            <label class="form-label">Teks Pertanyaan Soal <span class="required">*</span></label>
+            <textarea id="form-q-text" class="form-control" rows="3" placeholder="Tuliskan butir pertanyaan secara jelas..." required></textarea>
+          </div>
+
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 10px;">
+            Pilihan Jawaban (A, B, C, D)
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Pilihan A <span class="required">*</span></label>
+              <input type="text" id="form-q-opt0" class="form-control" placeholder="Teks opsi A" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Pilihan B <span class="required">*</span></label>
+              <input type="text" id="form-q-opt1" class="form-control" placeholder="Teks opsi B" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Pilihan C <span class="required">*</span></label>
+              <input type="text" id="form-q-opt2" class="form-control" placeholder="Teks opsi C" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Pilihan D <span class="required">*</span></label>
+              <input type="text" id="form-q-opt3" class="form-control" placeholder="Teks opsi D" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Kunci Jawaban yang Benar <span class="required">*</span></label>
+            <select id="form-q-key" class="form-control" required>
+              <option value="0">Pilihan A</option>
+              <option value="1">Pilihan B</option>
+              <option value="2">Pilihan C</option>
+              <option value="3">Pilihan D</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Pembahasan & Analisis Soal (Akan tampil saat evaluasi siswa)</label>
+            <textarea id="form-q-explanation" class="form-control" rows="3" placeholder="Jelaskan alasan mengapa opsi tersebut merupakan jawaban yang benar..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-question-form')">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Butir Soal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Edit Konfigurasi Kuis (Guru) -->
+  <div class="modal-backdrop" id="modal-quiz-edit">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">Konfigurasi Parameter Kuis</div>
+        <button class="modal-close" onclick="closeModal('modal-quiz-edit')">✕</button>
+      </div>
+      <form onsubmit="QuizEngine.saveQuizMetaForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Judul Kuis Evaluasi <span class="required">*</span></label>
+            <input type="text" id="form-quiz-title" class="form-control" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Batas Waktu (Menit)</label>
+              <input type="number" id="form-quiz-time" class="form-control" min="5" max="180" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Standar KKM (Poin)</label>
+              <input type="number" id="form-quiz-pass" class="form-control" min="0" max="100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Deskripsi & Petunjuk Singkat</label>
+            <textarea id="form-quiz-desc" class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-quiz-edit')">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Parameter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/quiz.js"></script>
+  <script>
+    QuizEngine.init();
+  </script>
+</body>
+</html>

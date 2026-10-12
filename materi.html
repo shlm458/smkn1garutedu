@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Pembelajaran — EduSchool</title>
+  <meta name="description" content="Modul pembelajaran interaktif mata pelajaran Informatika dengan tujuan, isi materi, studi kasus, dan rangkuman.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .lessons-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .lesson-sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .lesson-sidebar-item:hover {
+      background: var(--gold-subtle);
+      border-color: var(--gold-light);
+    }
+
+    .lesson-sidebar-item.active {
+      background: var(--gold-subtle);
+      border-color: var(--gold-primary);
+      box-shadow: 0 2px 6px var(--gold-glow);
+    }
+
+    .lesson-item-check {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid var(--border-color);
+    }
+
+    .lesson-item-check.completed {
+      background: var(--success-bg);
+      color: var(--success);
+      border-color: var(--success-border);
+    }
+
+    .lesson-item-check svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .lesson-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .lesson-item-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lesson-item-meta {
+      font-size: 0.74rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .lesson-rich-content h4 {
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      margin: 18px 0 8px;
+    }
+
+    .lesson-rich-content p {
+      margin-bottom: 12px;
+    }
+
+    .lesson-rich-content ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .code-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: monospace;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .lessons-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <div class="app-main">
+      <header class="app-topbar" id="app-topbar"></header>
+
+      <main class="app-content">
+        <!-- Header Halaman -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <h1 style="font-size: 1.8rem; margin-bottom: 4px;">Materi Informatika</h1>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">
+              Kurikulum terpadu: Berpikir Komputasional, Algoritma, Pemrograman Dasar, dan Keamanan Digital.
+            </p>
+          </div>
+          <div>
+            <button class="btn btn-primary" id="btn-add-lesson" onclick="MateriManager.openAddModal()" style="display: none;">
+              ➕ Tambah Materi Baru
+            </button>
+          </div>
+        </div>
+
+        <!-- 2 Kolom Layout: Sidebar Modul & Detail Pembaca -->
+        <div class="lessons-layout">
+          
+          <!-- Kolom Navigasi Modul -->
+          <div class="card" style="padding: 18px;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 12px;">
+              Daftar Modul Pembelajaran
+            </div>
+
+            <div class="form-group" style="margin-bottom: 14px;">
+              <input type="text" id="search-lesson-input" class="form-control" style="font-size: 0.84rem; padding: 8px 12px;" placeholder="Cari judul modul...">
+            </div>
+
+            <div id="lessons-catalog-list" style="max-height: 650px; overflow-y: auto;">
+              <!-- Rendered via materi.js -->
+            </div>
+          </div>
+
+          <!-- Kolom Pembaca Materi Terstruktur -->
+          <div id="lesson-detail-container">
+            <!-- Rendered via materi.js -->
+          </div>
+
+        </div>
+      </main>
+
+      <footer class="app-footer">
+        <div>&copy; 2024 EduSchool — Modul Pembelajaran Informatika Terstruktur</div>
+        <div class="app-footer-links">
+          <a href="profil-sekolah.html">Profil Sekolah</a>
+          <a href="kuis.html">Kuis Terkait</a>
+          <a href="nilai.html">Nilai</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal Form Tambah / Edit Materi (Pendidik) -->
+  <div class="modal-backdrop" id="modal-lesson-form">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-lesson-title">Kelola Materi Pembelajaran</div>
+        <button class="modal-close" onclick="closeModal('modal-lesson-form')">✕</button>
+      </div>
+      <form onsubmit="MateriManager.saveLessonForm(event)">
+        <div class="modal-body">
+          <input type="hidden" id="form-lesson-id">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Urutan Modul <span class="required">*</span></label>
+              <input type="number" id="form-lesson-order" class="form-control" min="1" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estimasi Durasi Belajar</label>
+              <input type="text" id="form-lesson-duration" class="form-control" placeholder="Contoh: 45 Menit">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Judul Materi Pembelajaran <span class="required">*</span></label>
+            <input type="text" id="form-lesson-name" class="form-control" placeholder="Contoh: 11. Pengenalan Kecerdasan Buatan Terapan" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tujuan Pembelajaran (Satu tujuan per baris)</label>
+            <textarea id="form-lesson-objectives" class="form-control" rows="3" placeholder="Memahami definisi AI...&#10;Mampu merancang prompt terstruktur..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Isi Materi Pembahasan (HTML / Teks) <span class="required">*</span></label>
+            <textarea id="form-lesson-content" class="form-control" rows="6" placeholder="<p>Penjelasan mendalam topik materi...</p>" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Contoh Penerapan / Kode Program (Opsional)</label>
+            <textarea id="form-lesson-examples" class="form-control" rows="3" placeholder="Contoh kode atau studi kasus kontekstual..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Poin-Poin Kunci Rangkuman (Satu poin per baris)</label>
+            <textarea id="form-lesson-keypoints" class="form-control" rows="3" placeholder="Poin penting nomor satu...&#10;Poin penting nomor dua..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-lesson-form')">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Materi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/materi.js"></script>
+  <script>
+    MateriManager.init();
+  </script>
+</body>
+</html>

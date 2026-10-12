@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Pengguna — EduSchool</title>
+  <meta name="description" content="Manajemen informasi akun demonstrasi pengguna EduSchool.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <div class="app-main">
+      <header class="app-topbar" id="app-topbar"></header>
+
+      <main class="app-content">
+        <!-- Header -->
+        <div style="margin-bottom: 24px;">
+          <h1 style="font-size: 1.8rem; margin-bottom: 4px;">Profil Pengguna</h1>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Informasi identitas akun demonstrasi dan preferensi pembelajaran Anda.
+          </p>
+        </div>
+
+        <!-- 2 Kolom Layout: Tampilan Profil & Form Edit -->
+        <div style="display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: flex-start;">
+          
+          <!-- Kartu Info Profil -->
+          <div class="card" style="text-align: center; padding: 32px 20px;">
+            <div id="profile-display-avatar" style="width: 88px; height: 88px; border-radius: 50%; background: var(--gold-subtle); border: 3px solid var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; margin: 0 auto 16px;">
+              👨‍🎓
+            </div>
+
+            <h2 id="profile-display-name" style="font-size: 1.35rem; color: var(--text-dark); margin-bottom: 4px;">
+              Nama Pengguna
+            </h2>
+            <div id="profile-display-role" class="badge badge-gold" style="margin-bottom: 12px;">
+              Peran Akun
+            </div>
+            <div id="profile-display-id" style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 16px;">
+              ID / NIS
+            </div>
+
+            <p id="profile-display-bio" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; padding: 12px; background: var(--bg-subtle); border-radius: var(--radius-md); margin-bottom: 20px;">
+              Bio deskripsi...
+            </p>
+
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 16px; text-align: left; font-size: 0.84rem; display: flex; flex-direction: column; gap: 8px;">
+              <div>
+                <span style="color: var(--text-light);">Email:</span>
+                <div id="profile-display-email" style="font-weight: 600; color: var(--text-dark);">-</div>
+              </div>
+              <div>
+                <span style="color: var(--text-light);">Telepon:</span>
+                <div id="profile-display-phone" style="font-weight: 600; color: var(--text-dark);">-</div>
+              </div>
+            </div>
+
+            <!-- Rekap Aktivitas -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+              <div style="background: var(--bg-subtle); padding: 10px; border-radius: var(--radius-sm);">
+                <div style="font-size: 0.72rem; color: var(--text-light); text-transform: uppercase;">Aktivitas 1</div>
+                <div id="profile-stat-activity-1" style="font-weight: 700; color: var(--gold-dark); font-size: 0.95rem;">-</div>
+              </div>
+              <div style="background: var(--bg-subtle); padding: 10px; border-radius: var(--radius-sm);">
+                <div style="font-size: 0.72rem; color: var(--text-light); text-transform: uppercase;">Aktivitas 2</div>
+                <div id="profile-stat-activity-2" style="font-weight: 700; color: var(--gold-dark); font-size: 0.95rem;">-</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulir Edit Profil -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">✏️ Perbarui Informasi Profil</div>
+              <div class="card-subtitle">Perubahan akan langsung tersimpan di peramban (localStorage)</div>
+            </div>
+
+            <form onsubmit="ProfileManager.saveProfile(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Nama Lengkap <span class="required">*</span></label>
+                  <input type="text" id="form-edit-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Pilihan Avatar Emoji</label>
+                  <select id="form-edit-avatar" class="form-control">
+                    <option value="👨‍🎓">👨‍🎓 Siswa Laki-laki</option>
+                    <option value="👩‍🎓">👩‍🎓 Siswi Perempuan</option>
+                    <option value="👩‍🏫">👩‍🏫 Guru Wanita</option>
+                    <option value="👨‍🏫">👨‍🏫 Guru Pria</option>
+                    <option value="🧑‍💻">🧑‍💻 Programmer</option>
+                    <option value="🎓">🎓 Toga Akademik</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Alamat Surel (Email) <span class="required">*</span></label>
+                  <input type="email" id="form-edit-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Nomor Kontak / WhatsApp</label>
+                  <input type="text" id="form-edit-phone" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Bio Singkat</label>
+                <textarea id="form-edit-bio" class="form-control" rows="4" placeholder="Tuliskan bio atau minat peminatan akademik Anda..."></textarea>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+                <button type="submit" class="btn btn-primary">
+                  Simpan Perubahan Profil
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </main>
+
+      <footer class="app-footer">
+        <div>&copy; 2024 EduSchool — Manajemen Akun & Profil Pengguna</div>
+        <div class="app-footer-links">
+          <a href="profil-sekolah.html">Profil Sekolah</a>
+          <a href="materi.html">Materi</a>
+          <a href="kuis.html">Kuis</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/profile.js"></script>
+  <script>
+    ProfileManager.init();
+  </script>
+</body>
+</html>

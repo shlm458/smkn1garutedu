@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Sekolah — SMA Unggulan EduSchool Nusantara</title>
+  <meta name="description" content="Profil resmi SMA Unggulan EduSchool Nusantara: Sejarah, Visi Misi, Kepala Sekolah, Pendidik, Fasilitas, Prestasi, dan Kontak.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .ps-hero {
+      background: linear-gradient(135deg, #FAF8F5, #F2EFE9);
+      border-bottom: 1px solid var(--border-color);
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .ps-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 30px;
+    }
+
+    .ps-section {
+      margin-bottom: 60px;
+    }
+
+    .ps-section-title {
+      font-size: 1.7rem;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .ps-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--gold-primary);
+      border-radius: var(--radius-pill);
+    }
+
+    .ps-banner-notice {
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-light);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      font-size: 0.85rem;
+      color: #6A531A;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header style="background: #FFFFFF; border-bottom: 1px solid var(--border-color); padding: 0 40px; height: 72px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100;">
+    <a href="index.html" class="brand-logo">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      </div>
+      <span class="brand-text">Edu<span>School</span></span>
+    </a>
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <a href="index.html" class="btn btn-outline btn-sm">← Beranda</a>
+      <a href="login.html" class="btn btn-primary btn-sm">Masuk Portal</a>
+    </div>
+  </header>
+
+  <!-- Banner Hero Profil -->
+  <div class="ps-hero">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div style="font-size: 3rem; margin-bottom: 12px;">🏛️</div>
+      <span class="badge badge-gold" style="margin-bottom: 12px;">Profil Institusi Pendidikan</span>
+      <h1 id="sp-name" style="font-family: var(--font-serif); font-size: 2.6rem; margin-bottom: 12px; color: var(--text-dark);">
+        SMA Unggulan EduSchool Nusantara
+      </h1>
+      <p id="sp-tagline" style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.6;">
+        Membina Generasi Unggul, Berkarakter, dan Menguasai Teknologi Global
+      </p>
+    </div>
+  </div>
+
+  <main class="ps-container">
+    <!-- Notice Placeholder Terpusat -->
+    <div class="ps-banner-notice">
+      <span style="font-size: 1.4rem;">ℹ️</span>
+      <div>
+        <strong>Informasi Konfigurasi Terpusat:</strong> Seluruh identitas sekolah, visi misi, foto, guru, dan kontak di bawah ini terhubung ke file <code>js/data.js</code>. Anda dapat mengganti data resmi sekolah secara instan pada satu file konfigurasi tersebut.
+      </div>
+    </div>
+
+    <!-- Identitas Formal Sekolah -->
+    <section class="ps-section">
+      <div class="stat-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="stat-card">
+          <div class="stat-label">NPSN Resmi</div>
+          <div class="stat-value" id="sp-npsn" style="font-size: 1.6rem;">10293847</div>
+          <div class="stat-trend">Terdaftar Kemendikbudristek</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Akreditasi Sekolah</div>
+          <div class="stat-value" id="sp-accreditation" style="font-size: 1.4rem; color: var(--gold-dark);">A (Unggul)</div>
+          <div class="stat-trend positive">BAN-SM Terverifikasi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Tahun Berdiri</div>
+          <div class="stat-value" id="sp-founded" style="font-size: 1.6rem;">2008</div>
+          <div class="stat-trend">16 Tahun Dedikasi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Kurikulum</div>
+          <div class="stat-value" id="sp-curriculum" style="font-size: 1.25rem;">Kurikulum Merdeka</div>
+          <div class="stat-trend">Mandiri Berbagi</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fasad Gedung & Lingkungan Sekolah -->
+    <section class="ps-section">
+      <div class="card" style="padding: 0; overflow: hidden; border-radius: var(--radius-xl);">
+        <div style="height: 280px; background: linear-gradient(135deg, #3A3528, #1E1C16); color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px;">
+          <div style="font-size: 3.5rem; margin-bottom: 12px;">🏫</div>
+          <h3 style="font-size: 1.6rem; color: #FFFFFF; font-family: var(--font-serif); margin-bottom: 6px;">
+            Gedung Utama Kampus Graha Cendekia
+          </h3>
+          <p style="color: var(--gold-light); font-size: 0.92rem; max-width: 500px;">
+            Arsitektur ramah lingkungan, ruang kelas berpendingin udara dan smart board interaktif di setiap sudut belajar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sejarah, Visi & Misi -->
+    <section class="ps-section">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div class="card">
+          <h3 class="ps-section-title">Sejarah Sekolah</h3>
+          <p id="sp-history" style="font-size: 0.94rem; line-height: 1.8; color: var(--text-dark); margin-top: 14px;">
+            Didirikan pada tahun 2008...
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="ps-section-title">Visi & Misi</h3>
+          <div style="margin-top: 14px;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 4px;">Visi:</div>
+            <p id="sp-vision" style="font-size: 0.94rem; font-weight: 600; color: var(--text-dark); margin-bottom: 16px; line-height: 1.6;">
+              Menjadi institusi pendidikan teladan...
+            </p>
+
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 6px;">Misi:</div>
+            <ul id="sp-mission-list" style="padding-left: 20px; font-size: 0.9rem; line-height: 1.7; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kepala Sekolah -->
+    <section class="ps-section">
+      <div class="card" style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--gold-subtle); border: 3px solid var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; flex-shrink: 0;">
+          👨‍🏫
+        </div>
+        <div style="flex: 1; min-width: 260px;">
+          <span class="badge badge-gold" style="margin-bottom: 6px;">Pimpinan Institusi</span>
+          <h3 id="sp-hm-name" style="font-size: 1.45rem; color: var(--text-dark); margin-bottom: 4px;">
+            Prof. Dr. Ir. Hendra Prasetya, M.Sc.
+          </h3>
+          <div id="sp-hm-nip" style="font-size: 0.82rem; color: var(--text-light); margin-bottom: 12px;">
+            NIP: 197208151998021001
+          </div>
+          <p id="sp-hm-quote" style="font-style: italic; color: var(--text-muted); font-size: 0.95rem; border-left: 3px solid var(--gold-primary); padding-left: 14px; line-height: 1.6;">
+            "Pendidikan sejati bukan sekadar mengisi bejana..."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guru & Tenaga Pendidik -->
+    <section class="ps-section">
+      <h3 class="ps-section-title" style="margin-bottom: 24px;">Dewan Guru & Tenaga Pendidik</h3>
+      <div id="sp-teachers-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+      </div>
+    </section>
+
+    <!-- Fasilitas Sekolah -->
+    <section class="ps-section">
+      <h3 class="ps-section-title" style="margin-bottom: 24px;">Fasilitas Kampus Unggulan</h3>
+      <div id="sp-facilities-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+      </div>
+    </section>
+
+    <!-- Program Unggulan -->
+    <section class="ps-section">
+      <h3 class="ps-section-title" style="margin-bottom: 24px;">Program Unggulan Sekolah</h3>
+      <div id="sp-programs-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+      </div>
+    </section>
+
+    <!-- Prestasi Sekolah -->
+    <section class="ps-section">
+      <div class="card">
+        <h3 class="ps-section-title" style="margin-bottom: 20px;">Rekam Prestasi Nasional & Internasional</h3>
+        <div id="sp-achievements-list"></div>
+      </div>
+    </section>
+
+    <!-- Galeri Kegiatan -->
+    <section class="ps-section">
+      <h3 class="ps-section-title" style="margin-bottom: 24px;">Galeri Aktivitas Pembelajaran</h3>
+      <div id="sp-gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+      </div>
+    </section>
+
+    <!-- Kontak & Alamat Sekolah -->
+    <section class="ps-section">
+      <div class="card" style="background: var(--bg-subtle);">
+        <h3 class="ps-section-title" style="margin-bottom: 20px;">Alamat & Layanan Informasi</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; font-size: 0.9rem;">
+          <div>
+            <div style="font-weight: 700; color: var(--gold-dark); margin-bottom: 4px;">📍 Alamat Kampus:</div>
+            <div id="sp-contact-address" style="color: var(--text-dark); line-height: 1.6;">-</div>
+          </div>
+          <div>
+            <div style="font-weight: 700; color: var(--gold-dark); margin-bottom: 4px;">📞 Telepon / WhatsApp:</div>
+            <div id="sp-contact-phone" style="color: var(--text-dark);">-</div>
+            <div id="sp-contact-wa" style="color: var(--text-dark);">-</div>
+          </div>
+          <div>
+            <div style="font-weight: 700; color: var(--gold-dark); margin-bottom: 4px;">✉️ Surel & Website:</div>
+            <div id="sp-contact-email" style="color: var(--text-dark);">-</div>
+            <div id="sp-contact-web" style="color: var(--text-dark);">-</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #FFFFFF; border-top: 1px solid var(--border-color); padding: 30px 40px; text-align: center; font-size: 0.85rem; color: var(--text-muted);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap: 14px;">
+      <div>&copy; 2024 EduSchool. Seluruh data profil di atas adalah template konfigurasi demonstrasi terpusat.</div>
+      <a href="index.html" class="btn btn-outline btn-sm">Kembali ke Beranda</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/school-profile.js"></script>
+  <script>
+    SchoolProfile.init();
+  </script>
+</body>
+</html>

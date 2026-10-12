@@ -1,0 +1,144 @@
+/* ==========================================================================
+   EDUSCHOOL - RESPONSIVE STYLES
+   Smooth adaptivity across Desktop, Laptop, Tablet, and Mobile
+   ========================================================================== */
+
+/* Large Tablets & Small Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+
+  .app-content {
+    padding: 24px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium Tablets & Mobile (<= 868px) */
+@media (max-width: 868px) {
+  .app-sidebar {
+    transform: translateX(-100%);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .app-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  .app-main {
+    margin-left: 0;
+  }
+
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+  }
+
+  .app-topbar {
+    padding: 0 18px;
+  }
+
+  .topbar-left .page-breadcrumb {
+    display: none;
+  }
+
+  .app-content {
+    padding: 18px 16px;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input-wrap {
+    min-width: 100%;
+  }
+
+  .modal-dialog {
+    max-height: 94vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .modal-header, .modal-body, .modal-footer {
+    padding: 16px 20px;
+  }
+}
+
+/* Small Mobile Screens (<= 480px) */
+@media (max-width: 480px) {
+  .brand-text {
+    font-size: 1.1rem;
+  }
+
+  .topbar-actions .role-switcher-pill {
+    display: none; /* Accessible in sidebar on mobile */
+  }
+
+  .app-footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .app-footer-links {
+    justify-content: center;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .btn-icon-only, .topbar-btn, .tab-btn {
+    width: auto;
+  }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .app-sidebar, .app-topbar, .app-footer, .btn, .topbar-actions {
+    display: none !important;
+  }
+  .app-main {
+    margin-left: 0 !important;
+  }
+  .app-content {
+    padding: 0 !important;
+  }
+  .card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}

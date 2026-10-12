@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduSchool — Platform Pembelajaran Sekolah Modern & Elegan</title>
+  <meta name="description" content="EduSchool adalah platform digital sekolah modern untuk siswa dan pendidik dengan materi terstruktur, kuis interaktif, dan presensi digital.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    /* Styling Khusus Landing Page */
+    .landing-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 100;
+      padding: 0 40px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .landing-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .landing-menu a {
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .landing-menu a:hover, .landing-menu a.active {
+      color: var(--gold-dark);
+    }
+
+    .hero-section {
+      padding: 90px 40px 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-light);
+      color: var(--gold-dark);
+      font-weight: 700;
+      font-size: 0.78rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 3.4rem;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero-title span {
+      color: var(--gold-primary);
+      font-style: italic;
+    }
+
+    .hero-desc {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 34px;
+      max-width: 560px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      background: linear-gradient(145deg, #FFFFFF, var(--bg-subtle));
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .hero-visual-badge {
+      position: absolute;
+      top: -14px;
+      right: 24px;
+      background: var(--text-dark);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .features-section {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 80px 40px;
+    }
+
+    .section-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 50px;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      border-color: var(--gold-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: var(--radius-md);
+      background: var(--gold-subtle);
+      color: var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .curriculum-section {
+      padding: 80px 40px;
+      background: var(--bg-main);
+    }
+
+    .landing-footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 60px 40px 30px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding: 50px 20px;
+      }
+      .hero-title {
+        font-size: 2.4rem;
+      }
+      .landing-nav {
+        padding: 0 20px;
+      }
+      .landing-menu {
+        display: none;
+      }
+      .features-section, .curriculum-section {
+        padding: 50px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="landing-nav">
+    <a href="index.html" class="brand-logo">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      </div>
+      <span class="brand-text">Edu<span>School</span></span>
+    </a>
+
+    <nav class="landing-menu">
+      <a href="index.html" class="active">Beranda</a>
+      <a href="profil-sekolah.html">Profil Sekolah</a>
+      <a href="mata-pelajaran.html">Pembelajaran</a>
+      <a href="jadwal.html">Jadwal</a>
+      <a href="pengumuman.html">Pengumuman</a>
+    </nav>
+
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="login.html" class="btn btn-outline btn-sm">Masuk Portal</a>
+      <a href="login.html" class="btn btn-primary btn-sm">Mulai Belajar</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section">
+      <div>
+        <div class="hero-badge">
+          <span>✨</span> Ekosistem Belajar Generasi Digital Unggul
+        </div>
+        <h1 class="hero-title">
+          Pendidikan Berkelas, Fondasi <span>Teknologi Masa Depan</span>.
+        </h1>
+        <p class="hero-desc">
+          EduSchool memadukan keanggunan tata kelola akademik dengan kecakapan komputasi modern. Siswa belajar secara terarah melalui modul interaktif, latihan berkala, evaluasi otomatis, dan pemantauan capaian yang transparan.
+        </p>
+        <div class="hero-ctas">
+          <a href="login.html" class="btn btn-primary btn-lg">
+            Mulai Belajar Sekarang →
+          </a>
+          <a href="profil-sekolah.html" class="btn btn-outline btn-lg">
+            Lihat Profil Sekolah
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="hero-visual">
+        <div class="hero-visual-badge">Kurikulum Terakreditasi A</div>
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 0.8rem; color: var(--gold-dark); font-weight: 700; text-transform: uppercase;">Modul Unggulan Terkini</div>
+          <h3 style="font-size: 1.25rem; margin-top: 4px;">Informatika & Berpikir Komputasional</h3>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-top: 4px;">10 Modul Terstruktur • Pembahasan Soal • Praktik Pemrograman</p>
+        </div>
+
+        <!-- Mini Progress Card -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; margin-bottom: 18px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.84rem;">
+            <span style="font-weight: 600;">Kemajuan Pembelajaran Siswa</span>
+            <span style="font-weight: 700; color: var(--gold-dark);">50% Selesai</span>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 50%;"></div>
+          </div>
+        </div>
+
+        <!-- Quick Items -->
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 0.86rem;">
+            <span>💻 01. Computational Thinking & Dekomposisi</span>
+            <span class="badge badge-success">Tuntas</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 0.86rem;">
+            <span>🔀 02. Algoritma & Pseudocode Terstruktur</span>
+            <span class="badge badge-success">Tuntas</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 0.86rem;">
+            <span>📊 03. Evaluasi Kuis Interaktif (10 Soal)</span>
+            <span class="badge badge-gold">Skor 90/100</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section class="features-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="badge badge-gold" style="margin-bottom: 10px;">Fitur Terintegrasi</span>
+          <h2>Dirancang untuk Keunggulan Siswa & Kemudahan Guru</h2>
+          <p>Seluruh instrumen pembelajaran digital dirangkum dalam antarmuka yang bersih, intuitif, dan responsif.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            </div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 8px;">Materi Terstruktur</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">Modul lengkap dengan tujuan pembelajaran, teori mendalam, contoh kode, dan rangkuman poin kunci.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 8px;">Kuis & Ulasan Soal</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">Timer otomatis, navigasi butir soal, penilaian instan, dan pembahasan lengkap setiap kunci jawaban.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 8px;">Presensi Digital</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">Simulasi absensi mandiri siswa dengan pencegahan presensi ganda dan pemantauan rekapitulasi guru.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <h4 style="font-size: 1.15rem; margin-bottom: 8px;">Transkrip & Evaluasi</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">Grafik visual perkembangan nilai, rata-rata capaian, rekapitulasi kehadiran, dan fitur cetak rapor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preview Kurikulum Informatika 10 Modul -->
+    <section class="curriculum-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="badge badge-gold" style="margin-bottom: 10px;">Silabus Prioritas</span>
+          <h2>10 Modul Pembelajaran Informatika</h2>
+          <p>Kurikulum komprehensif yang dirancang untuk membekali siswa dengan nalar logika dan keterampilan teknologi digital.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 01</div>
+            <div style="font-weight: 700; margin-top: 4px;">Pengantar Informatika & Computational Thinking</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 02</div>
+            <div style="font-weight: 700; margin-top: 4px;">Algoritma dan Notasi Pseudocode</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 03</div>
+            <div style="font-weight: 700; margin-top: 4px;">Diagram Alir (Flowchart) Terstandar</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 04</div>
+            <div style="font-weight: 700; margin-top: 4px;">Dasar Pemrograman & Lingkungan Runtime</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 05</div>
+            <div style="font-weight: 700; margin-top: 4px;">Variabel, Tipe Data, dan Ragam Operator</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 06</div>
+            <div style="font-weight: 700; margin-top: 4px;">Percabangan dan Struktur Perulangan</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 07</div>
+            <div style="font-weight: 700; margin-top: 4px;">Struktur Data Dasar (Array, Stack, Queue)</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 08</div>
+            <div style="font-weight: 700; margin-top: 4px;">Jaringan Komputer, TCP/IP, dan Internet</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 09</div>
+            <div style="font-weight: 700; margin-top: 4px;">Keamanan Siber & Perlindungan Privasi</div>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--gold-primary);">
+            <div style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 700;">MODUL 10</div>
+            <div style="font-weight: 700; margin-top: 4px;">Analisis Data, Visualisasi & Etika AI</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 36px;">
+          <a href="materi.html" class="btn btn-primary">
+            Eksplorasi Seluruh Materi Pelajaran →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="section-container" style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+      <div>
+        <div class="brand-logo" style="margin-bottom: 14px;">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          </div>
+          <span class="brand-text">Edu<span>School</span></span>
+        </div>
+        <p style="font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; max-width: 320px;">
+          Platform pembelajaran digital terpadu untuk menciptakan generasi pembelajar mandiri, berkarakter, dan menguasai teknologi masa depan.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="font-size: 0.95rem; margin-bottom: 16px;">Navigasi</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.86rem;">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="profil-sekolah.html">Profil Sekolah</a></li>
+          <li><a href="mata-pelajaran.html">Mata Pelajaran</a></li>
+          <li><a href="jadwal.html">Jadwal Pelajaran</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size: 0.95rem; margin-bottom: 16px;">Pembelajaran</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.86rem;">
+          <li><a href="materi.html">Materi Informatika</a></li>
+          <li><a href="kuis.html">Kuis Interaktif</a></li>
+          <li><a href="absensi.html">Simulasi Presensi</a></li>
+          <li><a href="nilai.html">Transkrip Nilai</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size: 0.95rem; margin-bottom: 16px;">Kontak Demo</h4>
+        <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.6;">
+          Jl. Pendidikan Cendekia No. 45<br>
+          Telp: (021) 7890-1234<br>
+          Email: kontak@eduschool.sch.id
+        </p>
+      </div>
+    </div>
+
+    <div class="section-container" style="border-top: 1px solid var(--border-subtle); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-light); flex-wrap: wrap; gap: 10px;">
+      <div>&copy; 2024 EduSchool. Seluruh hak cipta dilindungi. Demonstrasi Frontend Tanpa Database Eksternal.</div>
+      <button class="btn-reset-demo" onclick="if(confirm('Reset seluruh data demonstrasi?')) StorageManager.resetAllData()">
+        🔄 Reset Data Demonstrasi
+      </button>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

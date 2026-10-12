@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masuk Portal Pembelajaran — EduSchool</title>
+  <meta name="description" content="Halaman autentikasi demonstrasi frontend EduSchool untuk peran siswa dan guru.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    body {
+      background-color: var(--bg-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+
+    .login-container {
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .login-brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .login-brand .brand-logo {
+      display: inline-flex;
+      font-size: 1.6rem;
+    }
+
+    .role-select-tabs {
+      display: flex;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      margin-bottom: 24px;
+      gap: 4px;
+    }
+
+    .role-tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .role-tab.active {
+      background: #FFFFFF;
+      color: var(--text-dark);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .quick-access-box {
+      margin-top: 24px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-size: 0.82rem;
+    }
+
+    .quick-access-title {
+      font-weight: 700;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-brand">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        </div>
+        <span class="brand-text">Edu<span>School</span></span>
+      </a>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 8px;">
+        Portal Pembelajaran Digital Terpadu
+      </p>
+    </div>
+
+    <div class="card" style="box-shadow: var(--shadow-lg);">
+      <h2 style="font-size: 1.35rem; margin-bottom: 6px;">Masuk ke Akun Anda</h2>
+      <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 20px;">
+        Pilih peran Anda untuk mengakses antarmuka demonstrasi
+      </p>
+
+      <!-- Pilihan Tab Peran -->
+      <div class="role-select-tabs">
+        <button type="button" class="role-tab active" id="tab-btn-siswa" onclick="setRoleTab('siswa')">
+          <span>👨‍🎓</span> Siswa
+        </button>
+        <button type="button" class="role-tab" id="tab-btn-guru" onclick="setRoleTab('guru')">
+          <span>👩‍🏫</span> Guru / Pendidik
+        </button>
+      </div>
+
+      <!-- Tombol Instan 1-Klik -->
+      <div style="margin-bottom: 24px;">
+        <button type="button" class="btn btn-primary" id="btn-quick-login" style="width: 100%; font-size: 0.95rem; padding: 12px;" onclick="handleQuickLogin()">
+          ⚡ Masuk Instan sebagai Siswa Demo
+        </button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <hr style="flex: 1; border: none; border-top: 1px solid var(--border-subtle);">
+        <span style="font-size: 0.76rem; color: var(--text-light); text-transform: uppercase;">atau masuk manual</span>
+        <hr style="flex: 1; border: none; border-top: 1px solid var(--border-subtle);">
+      </div>
+
+      <!-- Form Manual -->
+      <form id="form-login" onsubmit="handleManualLogin(event)">
+        <div class="form-group">
+          <label class="form-label" id="label-identifier">Nomor Induk Siswa (NIS) atau Email</label>
+          <input type="text" id="input-identifier" class="form-control" placeholder="Contoh: 20241001" required value="20241001">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Kata Sandi</label>
+          <input type="password" id="input-password" class="form-control" placeholder="••••••••" required value="siswa123">
+        </div>
+
+        <button type="submit" class="btn btn-dark" style="width: 100%;">
+          Masuk ke Dashboard
+        </button>
+      </form>
+
+      <!-- Catatan Kredensial Demonstrasi -->
+      <div class="quick-access-box">
+        <div class="quick-access-title">
+          <span>💡</span> Informasi Akun Demonstrasi
+        </div>
+        <div style="color: var(--text-dark); line-height: 1.5;" id="demo-credentials-info">
+          <strong>Siswa:</strong> Ahmad Rizky Pratama (NIS: <code>20241001</code> / Sandi: <code>siswa123</code>)<br>
+          <strong>Guru:</strong> Dra. Sri Wahyuni, M.Kom. (NIP: <code>198305142008012005</code> / Sandi: <code>guru123</code>)
+        </div>
+        <div style="margin-top: 6px; font-size: 0.74rem; color: var(--text-light);">
+          *Sistem ini adalah simulasi frontend murni. Autentikasi disimpan pada localStorage peramban Anda.
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">
+      <a href="index.html" style="color: var(--gold-dark); font-weight: 600;">← Kembali ke Beranda Sekolah</a>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    let selectedRole = "siswa";
+
+    function setRoleTab(role) {
+      selectedRole = role;
+      document.getElementById("tab-btn-siswa").classList.toggle("active", role === "siswa");
+      document.getElementById("tab-btn-guru").classList.toggle("active", role === "guru");
+
+      const quickBtn = document.getElementById("btn-quick-login");
+      const labelId = document.getElementById("label-identifier");
+      const inputId = document.getElementById("input-identifier");
+      const inputPass = document.getElementById("input-password");
+
+      if (role === "guru") {
+        quickBtn.innerHTML = "⚡ Masuk Instan sebagai Guru Demo";
+        labelId.textContent = "Nomor Induk Pegawai (NIP) atau Email";
+        inputId.value = "198305142008012005";
+        inputId.placeholder = "Contoh: 198305142008012005";
+        inputPass.value = "guru123";
+      } else {
+        quickBtn.innerHTML = "⚡ Masuk Instan sebagai Siswa Demo";
+        labelId.textContent = "Nomor Induk Siswa (NIS) atau Email";
+        inputId.value = "20241001";
+        inputId.placeholder = "Contoh: 20241001";
+        inputPass.value = "siswa123";
+      }
+    }
+
+    function handleQuickLogin() {
+      AuthManager.loginAs(selectedRole);
+    }
+
+    function handleManualLogin(event) {
+      event.preventDefault();
+      const id = document.getElementById("input-identifier").value.trim();
+      const pass = document.getElementById("input-password").value.trim();
+
+      const res = AuthManager.loginWithCredentials(id, pass, selectedRole);
+      if (res.success) {
+        window.location.href = res.redirect;
+      } else {
+        App.toast("Gagal Masuk", res.message, "danger");
+      }
+    }
+
+    // Inisialisasi awal
+    App.setupToastContainer();
+  </script>
+</body>
+</html>

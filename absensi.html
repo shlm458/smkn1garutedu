@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulasi Presensi & Absensi — EduSchool</title>
+  <meta name="description" content="Modul simulasi absensi digital untuk siswa dan rekapitulasi kehadiran kelas bagi guru.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <div class="app-main">
+      <header class="app-topbar" id="app-topbar"></header>
+
+      <main class="app-content">
+        <!-- Header Halaman -->
+        <div style="margin-bottom: 24px;">
+          <h1 style="font-size: 1.8rem; margin-bottom: 4px;">Presensi Digital Kelas</h1>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Sistem pencatatan kehadiran sesi pembelajaran secara digital dan transparan.
+          </p>
+        </div>
+
+        <!-- Disclaimer Demonstrasi Edukasi -->
+        <div class="alert alert-gold">
+          <span style="font-size: 1.3rem;">ℹ️</span>
+          <div>
+            <strong>Pernyataan Demonstrasi Frontend:</strong> Fitur presensi ini merupakan simulasi interaktif sisi peramban web dan tidak terverifikasi secara biometrik atau fisik sebagai presensi kedinasan resmi.
+          </div>
+        </div>
+
+        <!-- =================== 1. VIEW SISWA =================== -->
+        <div id="view-student-attendance">
+          
+          <!-- Bento Grid Rekap Siswa -->
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-label">Persentase Kehadiran</div>
+              <div class="stat-value" id="att-student-rate" style="color: var(--success);">95%</div>
+              <div class="stat-trend positive">Status Sangat Tertib</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Sesi Diikuti</div>
+              <div class="stat-value" id="att-student-total">4 Sesi</div>
+              <div class="stat-trend">Semester Ganjil 2024</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Hadir Tepat Waktu</div>
+              <div class="stat-value" id="att-student-hadir" style="color: var(--success);">3 Kali</div>
+              <div class="stat-trend">Terverifikasi Digital</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Izin / Sakit / Alpa</div>
+              <div class="stat-value" id="att-student-izin" style="color: var(--warning);">1 Kali</div>
+              <div class="stat-trend">Surat Keterangan Ada</div>
+            </div>
+          </div>
+
+          <!-- Widget Simulasi Check-in Hari Ini -->
+          <div class="card" style="margin-bottom: 28px; border: 1.5px solid var(--gold-light); background: linear-gradient(135deg, #FFFFFF, var(--bg-subtle));">
+            <div class="card-header">
+              <div>
+                <span class="badge badge-gold" style="margin-bottom: 4px;">Sesi Terbuka</span>
+                <div class="card-title">🕒 Simulasi Presensi Sesi Hari Ini</div>
+                <div class="card-subtitle">Informatika: Pertemuan 8 - Jaringan Komputer & Internet</div>
+              </div>
+              <div style="text-align: right; font-size: 0.8rem; color: var(--text-light);">
+                Pendidik: Dra. Sri Wahyuni, M.Kom.<br>Lab Komputer 1
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+              <div id="checkin-status-notice" style="font-size: 0.88rem; color: var(--text-dark);">
+                <!-- Dynamically set by attendance.js -->
+              </div>
+
+              <div>
+                <button type="button" class="btn btn-primary" id="btn-do-checkin" onclick="AttendanceManager.studentCheckIn()">
+                  Lakukan Simulasi Presensi Hadir Sekarang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabel Riwayat Kehadiran Siswa -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📜 Riwayat Presensi Anda</div>
+              <span class="badge badge-neutral">Siswa: Ahmad Rizky Pratama</span>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Mata Pelajaran</th>
+                    <th>Sesi Pertemuan</th>
+                    <th>Waktu Hadir</th>
+                    <th>Status</th>
+                    <th>Catatan / Keterangan</th>
+                  </tr>
+                </thead>
+                <tbody id="student-attendance-table-body">
+                  <!-- Rendered via attendance.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- =================== 2. VIEW GURU =================== -->
+        <div id="view-teacher-attendance" style="display: none;">
+          
+          <!-- Bento Grid Rekap Kelas -->
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-label">Kehadiran Kelas Rata-Rata</div>
+              <div class="stat-value" id="teacher-att-rate" style="color: var(--success);">92%</div>
+              <div class="stat-trend positive">Kelas X-Informatika 1</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Hadir</div>
+              <div class="stat-value" id="teacher-att-hadir" style="color: var(--success);">5</div>
+              <div class="stat-trend">Siswa Tepat Waktu</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Izin</div>
+              <div class="stat-value" id="teacher-att-izin" style="color: var(--warning);">1</div>
+              <div class="stat-trend">Keterangan Resmi</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Sakit / Alpa</div>
+              <div class="stat-value" id="teacher-att-sakit" style="color: var(--danger);">2</div>
+              <div class="stat-trend">Perlu Pembinaan</div>
+            </div>
+          </div>
+
+          <!-- Filter & Kontrol Guru -->
+          <div class="card" style="margin-bottom: 24px;">
+            <div class="card-header">
+              <div class="card-title">🔍 Filter Rekap Kehadiran Siswa</div>
+              <span class="badge badge-gold">Panel Guru Pengampu</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Mata Pelajaran</label>
+                <select id="filter-att-subject" class="form-control">
+                  <option value="all">Semua Mata Pelajaran</option>
+                  <option value="Informatika" selected>Informatika</option>
+                  <option value="Matematika Diskrit">Matematika Diskrit</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Tanggal Sesi</label>
+                <input type="date" id="filter-att-date" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabel Rekapitulasi & Modifikasi Guru -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">📋 Rekapitulasi Presensi Seluruh Siswa</div>
+                <div class="card-subtitle">Ubah status kehadiran langsung pada daftar di bawah ini</div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nama Siswa</th>
+                    <th>Tanggal</th>
+                    <th>Mata Pelajaran</th>
+                    <th>Sesi</th>
+                    <th>Waktu</th>
+                    <th>Status Kehadiran</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="teacher-attendance-table-body">
+                  <!-- Rendered via attendance.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+
+      <footer class="app-footer">
+        <div>&copy; 2024 EduSchool — Sistem Presensi & Kehadiran Digital</div>
+        <div class="app-footer-links">
+          <a href="profil-sekolah.html">Profil Sekolah</a>
+          <a href="materi.html">Materi</a>
+          <a href="jadwal.html">Jadwal</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/attendance.js"></script>
+  <script>
+    AttendanceManager.init();
+  </script>
+</body>
+</html>

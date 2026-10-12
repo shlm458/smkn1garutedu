@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mata Pelajaran — EduSchool</title>
+  <meta name="description" content="Katalog mata pelajaran dan kurikulum pembelajaran EduSchool.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <div class="app-main">
+      <header class="app-topbar" id="app-topbar"></header>
+
+      <main class="app-content">
+        <div style="margin-bottom: 24px;">
+          <h1 style="font-size: 1.8rem; margin-bottom: 6px;">Katalog Mata Pelajaran</h1>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Daftar kurikulum terstruktur jenjang Sekolah Menengah Atas berbasis Kurikulum Merdeka.
+          </p>
+        </div>
+
+        <!-- Filter & Pencarian -->
+        <div class="filter-bar">
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" x2="16.65"/></svg>
+            <input type="text" id="search-subject-input" class="form-control" placeholder="Cari mata pelajaran atau nama guru...">
+          </div>
+
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline btn-sm filter-cat-btn active" data-cat="all" onclick="filterCategory('all')">Semua Bidang</button>
+            <button class="btn btn-outline btn-sm filter-cat-btn" data-cat="Sains" onclick="filterCategory('Sains')">Sains & Komputasi</button>
+            <button class="btn btn-outline btn-sm filter-cat-btn" data-cat="Bahasa" onclick="filterCategory('Bahasa')">Bahasa</button>
+          </div>
+        </div>
+
+        <!-- Grid Mata Pelajaran -->
+        <div id="subjects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+          <!-- Rendered via JS -->
+        </div>
+      </main>
+
+      <footer class="app-footer">
+        <div>&copy; 2024 EduSchool — Platform Pembelajaran Digital Terpadu</div>
+        <div class="app-footer-links">
+          <a href="profil-sekolah.html">Profil Sekolah</a>
+          <a href="materi.html">Materi</a>
+          <a href="kuis.html">Kuis</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    App.init("mapel");
+
+    let currentCategory = "all";
+    let searchKeyword = "";
+
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll(".filter-cat-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.cat === cat);
+      });
+      renderSubjects();
+    }
+
+    document.getElementById("search-subject-input").addEventListener("input", e => {
+      searchKeyword = e.target.value.toLowerCase().trim();
+      renderSubjects();
+    });
+
+    function renderSubjects() {
+      let subjects = StorageManager.getSubjects();
+      const lessons = StorageManager.getLessons();
+      const progressMap = StorageManager.getLessonProgress();
+      const user = AuthManager.getCurrentUser();
+      const isSiswa = user.role === "siswa";
+
+      const completedInformatics = Object.values(progressMap).filter(Boolean).length;
+      const percentInformatics = lessons.length > 0 ? Math.round((completedInformatics / lessons.length) * 100) : 0;
+
+      if (currentCategory !== "all") {
+        subjects = subjects.filter(s => s.category.includes(currentCategory));
+      }
+
+      if (searchKeyword) {
+        subjects = subjects.filter(s =>
+          s.name.toLowerCase().includes(searchKeyword) ||
+          s.teacher.toLowerCase().includes(searchKeyword) ||
+          s.description.toLowerCase().includes(searchKeyword)
+        );
+      }
+
+      const container = document.getElementById("subjects-grid");
+      if (subjects.length === 0) {
+        container.innerHTML = `
+          <div class="card empty-state" style="grid-column: 1 / -1;">
+            <div class="empty-state-icon">🔍</div>
+            <div class="empty-state-title">Mata Pelajaran Tidak Ditemukan</div>
+            <div class="empty-state-desc">Coba gunakan kata kunci pencarian lain atau pilih kategori Semua.</div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = subjects
+        .map(sub => {
+          const isInformatics = sub.id === "sub-info";
+          const totalModul = isInformatics ? lessons.length : sub.totalLessons;
+          const progVal = isInformatics ? percentInformatics : 0;
+
+          return `
+          <div class="card" style="border-top: 4px solid ${sub.color || "var(--gold-primary)"}; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                <span class="badge badge-gold">${sub.code}</span>
+                <span class="badge badge-neutral" style="font-size: 0.72rem;">${sub.category}</span>
+              </div>
+
+              <h3 style="font-size: 1.3rem; margin-bottom: 6px; color: var(--text-dark);">${sub.name}</h3>
+              <div style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 12px;">
+                Pendidik: <strong style="color: var(--text-dark);">${sub.teacher}</strong>
+              </div>
+
+              <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px;">
+                ${sub.description}
+              </p>
+
+              ${
+                isSiswa && isInformatics
+                  ? `
+                <div style="background: var(--bg-subtle); padding: 12px 14px; border-radius: var(--radius-md); margin-bottom: 18px;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 600; margin-bottom: 6px;">
+                    <span>Progress Modul</span>
+                    <span style="color: var(--gold-dark);">${completedInformatics} / ${totalModul} Modul (${progVal}%)</span>
+                  </div>
+                  <div class="progress-container">
+                    <div class="progress-bar" style="width: ${progVal}%;"></div>
+                  </div>
+                </div>
+              `
+                  : `
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 18px;">
+                  📌 Tersedia: <strong>${totalModul} Modul Pembelajaran Terstruktur</strong>
+                </div>
+              `
+              }
+            </div>
+
+            <div>
+              ${
+                isInformatics
+                  ? `
+                <a href="materi.html" class="btn btn-primary" style="width: 100%;">
+                  Buka Modul Pembelajaran →
+                </a>
+              `
+                  : `
+                <button class="btn btn-outline" style="width: 100%; opacity: 0.7;" onclick="App.toast('Info', 'Materi demonstrasi fokus utama saat ini adalah mata pelajaran Informatika.', 'info')">
+                  Lihat Silabus Materi (Dummy)
+                </button>
+              `
+              }
+            </div>
+          </div>
+        `;
+        })
+        .join("");
+    }
+
+    renderSubjects();
+  </script>
+</body>
+</html>

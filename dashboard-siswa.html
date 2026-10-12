@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Siswa — EduSchool</title>
+  <meta name="description" content="Portal dashboard siswa untuk memantau kemajuan belajar, kuis, absensi, dan jadwal harian.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+      <!-- Topbar -->
+      <header class="app-topbar" id="app-topbar"></header>
+
+      <!-- Content -->
+      <main class="app-content">
+        <!-- Header Sapaan & Banner -->
+        <div style="margin-bottom: 28px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h1 id="student-greeting" style="font-size: 1.8rem; margin-bottom: 4px;">
+              Selamat Datang, Siswa
+            </h1>
+            <p id="student-subgreeting" style="font-size: 0.88rem; color: var(--text-muted);">
+              Memuat data akademik...
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <a href="kuis.html" class="btn btn-primary btn-sm">
+              ✍️ Kerjakan Kuis Aktif
+            </a>
+            <a href="absensi.html" class="btn btn-outline btn-sm">
+              ✓ Simulasi Presensi
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento Grid Statistik Siswa -->
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Progress Belajar</span>
+              <div class="stat-icon">💻</div>
+            </div>
+            <div class="stat-value" id="stat-progress-val">50%</div>
+            <div class="stat-trend positive">5 dari 10 Modul Tuntas</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Rata-Rata Nilai</span>
+              <div class="stat-icon">🏆</div>
+            </div>
+            <div class="stat-value" id="stat-score-val">88.5</div>
+            <div class="stat-trend positive">Di Atas Standar KKM (75)</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Tingkat Kehadiran</span>
+              <div class="stat-icon">📅</div>
+            </div>
+            <div class="stat-value" id="stat-attendance-val">95%</div>
+            <div class="stat-trend">Status Presensi Tertib</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Modul Selesai</span>
+              <div class="stat-icon">📚</div>
+            </div>
+            <div class="stat-value" id="stat-lessons-val">5 / 10</div>
+            <div class="stat-trend">Informatika Dasar</div>
+          </div>
+        </div>
+
+        <!-- Tombol Akses Cepat (Quick Action Bar) -->
+        <div class="card" style="margin-bottom: 28px; padding: 18px 24px;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 12px;">
+            Akses Pintas Pembelajaran
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="materi.html" class="btn btn-subtle btn-sm">📚 Buka Materi</a>
+            <a href="kuis.html" class="btn btn-subtle btn-sm">📝 Kuis Interaktif</a>
+            <a href="absensi.html" class="btn btn-subtle btn-sm">🕒 Cek Presensi</a>
+            <a href="jadwal.html" class="btn btn-subtle btn-sm">🗓️ Jadwal Kelas</a>
+            <a href="nilai.html" class="btn btn-subtle btn-sm">📊 Transkrip Nilai</a>
+            <a href="mata-pelajaran.html" class="btn btn-subtle btn-sm">📖 Katalog Mapel</a>
+          </div>
+        </div>
+
+        <!-- Progress Kurikulum Informatika Bar -->
+        <div class="card" style="margin-bottom: 28px;">
+          <div class="card-header">
+            <div>
+              <div class="card-title">🚀 Capaian Modul Informatika</div>
+              <div class="card-subtitle" id="informatics-progress-text">Memuat progress...</div>
+            </div>
+            <a href="materi.html" class="btn btn-outline btn-sm">Lihat Semua Modul →</a>
+          </div>
+          <div class="progress-container" style="height: 10px;">
+            <div class="progress-bar" id="informatics-progress-bar" style="width: 50%;"></div>
+          </div>
+        </div>
+
+        <!-- 2 Kolom Layout: Modul Belum Selesai & Jadwal Hari Ini -->
+        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; margin-bottom: 28px;">
+          
+          <!-- Materi Yang Perlu Dilanjutkan -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📖 Modul Berikutnya</div>
+              <span class="badge badge-warning">Perlu Dipelajari</span>
+            </div>
+            <div id="unfinished-lessons-list">
+              <!-- Rendered via siswa.js -->
+            </div>
+          </div>
+
+          <!-- Jadwal Pelajaran Hari Ini -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🗓️ Jadwal Pelajaran</div>
+              <a href="jadwal.html" class="btn btn-outline btn-sm">Lengkap</a>
+            </div>
+            <div id="today-schedule-list">
+              <!-- Rendered via siswa.js -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 2 Kolom Bawah: Nilai Kuis Terbaru & Pengumuman -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          
+          <!-- Nilai Kuis Terbaru -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🏆 Hasil Kuis Terbaru</div>
+              <a href="nilai.html" class="btn btn-outline btn-sm">Rapor Lengkap</a>
+            </div>
+            <div id="recent-quiz-list">
+              <!-- Rendered via siswa.js -->
+            </div>
+          </div>
+
+          <!-- Pengumuman Terbaru -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📢 Warta & Pengumuman</div>
+              <a href="pengumuman.html" class="btn btn-outline btn-sm">Semua</a>
+            </div>
+            <div id="latest-announcements-list">
+              <!-- Rendered via siswa.js -->
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <!-- App Footer -->
+      <footer class="app-footer">
+        <div>&copy; 2024 EduSchool — Platform Pembelajaran Digital Terpadu</div>
+        <div class="app-footer-links">
+          <a href="profil-sekolah.html">Profil Sekolah</a>
+          <a href="materi.html">Materi</a>
+          <a href="kuis.html">Kuis</a>
+          <a href="absensi.html">Absensi</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/siswa.js"></script>
+  <script>
+    SiswaDashboard.init();
+  </script>
+</body>
+</html>

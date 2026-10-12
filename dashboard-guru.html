@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Guru — EduSchool</title>
+  <meta name="description" content="Portal pendidik untuk mengelola kurikulum modul pembelajaran, kuis, nilai, dan rekap absensi siswa.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+      <!-- Topbar -->
+      <header class="app-topbar" id="app-topbar"></header>
+
+      <!-- Content -->
+      <main class="app-content">
+        <!-- Header Sapaan Guru -->
+        <div style="margin-bottom: 28px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h1 id="teacher-greeting" style="font-size: 1.8rem; margin-bottom: 4px;">
+              Selamat Datang, Pendidik
+            </h1>
+            <p id="teacher-subgreeting" style="font-size: 0.88rem; color: var(--text-muted);">
+              Memuat data pendidik...
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <a href="materi.html" class="btn btn-primary btn-sm">
+              ➕ Tambah Materi Baru
+            </a>
+            <a href="kuis.html" class="btn btn-outline btn-sm">
+              📝 Kelola Soal Kuis
+            </a>
+            <a href="absensi.html" class="btn btn-outline btn-sm">
+              🕒 Rekap Presensi
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento Grid Statistik Pendidik -->
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Siswa Bimbingan</span>
+              <div class="stat-icon">👥</div>
+            </div>
+            <div class="stat-value" id="teacher-stat-students">6</div>
+            <div class="stat-trend positive">Kelas X-Informatika 1</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Modul Terpublikasi</span>
+              <div class="stat-icon">📚</div>
+            </div>
+            <div class="stat-value" id="teacher-stat-lessons">10</div>
+            <div class="stat-trend">Silabus Informatika Aktif</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Kuis Aktif</span>
+              <div class="stat-icon">📝</div>
+            </div>
+            <div class="stat-value" id="teacher-stat-quizzes">1</div>
+            <div class="stat-trend">10 Butir Soal Terpasang</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Rata-Rata Nilai Kelas</span>
+              <div class="stat-icon">📈</div>
+            </div>
+            <div class="stat-value" id="teacher-stat-avg">90.0</div>
+            <div class="stat-trend positive">Performa Kelas Unggul</div>
+          </div>
+        </div>
+
+        <!-- Tombol Aksi Cepat Guru -->
+        <div class="card" style="margin-bottom: 28px; padding: 18px 24px;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 12px;">
+            Pusat Pengelolaan Akademik
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="materi.html" class="btn btn-subtle btn-sm">📄 Manajemen Modul</a>
+            <a href="kuis.html" class="btn btn-subtle btn-sm">✍️ Bank Soal & Kunci</a>
+            <a href="absensi.html" class="btn btn-subtle btn-sm">📋 Manajemen Presensi</a>
+            <a href="nilai.html" class="btn btn-subtle btn-sm">📊 Rekap Nilai Siswa</a>
+            <a href="pengumuman.html" class="btn btn-subtle btn-sm">📢 Terbitkan Warta</a>
+            <a href="mata-pelajaran.html" class="btn btn-subtle btn-sm">📖 Kurikulum Mapel</a>
+          </div>
+        </div>
+
+        <!-- Tabel Siswa Bimbingan -->
+        <div class="card" style="margin-bottom: 28px;">
+          <div class="card-header">
+            <div>
+              <div class="card-title">👨‍🎓 Daftar Siswa Bimbingan</div>
+              <div class="card-subtitle">Kelas X-Informatika 1 (Tahun Ajaran 2024/2025)</div>
+            </div>
+            <a href="nilai.html" class="btn btn-outline btn-sm">Lihat Transkrip Lengkap →</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Profil Siswa</th>
+                  <th>Kelas</th>
+                  <th>Rata-Rata Nilai</th>
+                  <th>Tingkat Presensi</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="teacher-students-table-body">
+                <!-- Rendered via guru.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 2 Kolom: Hasil Kuis Siswa & Feed Presensi Terkini -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          
+          <!-- Hasil Kuis Siswa -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📝 Hasil Pengerjaan Kuis Siswa</div>
+              <a href="kuis.html" class="btn btn-outline btn-sm">Semua Hasil</a>
+            </div>
+            <div id="teacher-recent-results-list">
+              <!-- Rendered via guru.js -->
+            </div>
+          </div>
+
+          <!-- Feed Presensi -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🕒 Presensi Sesi Terkini</div>
+              <a href="absensi.html" class="btn btn-outline btn-sm">Kelola Presensi</a>
+            </div>
+            <div id="teacher-attendance-today-list">
+              <!-- Rendered via guru.js -->
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <!-- App Footer -->
+      <footer class="app-footer">
+        <div>&copy; 2024 EduSchool — Panel Pengelolaan Akademik Guru</div>
+        <div class="app-footer-links">
+          <a href="profil-sekolah.html">Profil Sekolah</a>
+          <a href="materi.html">Materi</a>
+          <a href="kuis.html">Kuis</a>
+          <a href="absensi.html">Absensi</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/guru.js"></script>
+  <script>
+    GuruDashboard.init();
+  </script>
+</body>
+</html>
