@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - INTERACTIVE QUIZ ENGINE & MANAGEMENT
+ * SMK AL-MADANI GARUT - INTERACTIVE QUIZ ENGINE & MANAGEMENT
  * Menjalankan engine kuis interaktif bagi siswa: timer, navigator soal, validasi,
  * penilaian otomatis, pembahasan mendalam, serta modul CRUD kuis dan soal untuk guru.
  */

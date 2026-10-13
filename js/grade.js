@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - GRADES & ACADEMIC PERFORMANCE CONTROLLER
+ * SMK AL-MADANI GARUT - GRADES & ACADEMIC PERFORMANCE CONTROLLER
  * Menghitung GPA/Rata-rata, rekap nilai kuis & tugas, visualisasi grafik SVG,
  * dan fitur cetak transkrip nilai demonstrasi.
  */

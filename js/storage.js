@@ -1,22 +1,22 @@
 /**
- * EDUSCHOOL - LOCALSTORAGE MANAGER
+ * SMK AL-MADANI GARUT - LOCALSTORAGE MANAGER
  * Mengelola persistensi data demonstrasi, inisialisasi awal, sinkronisasi state,
  * dan fitur reset data ke kondisi default.
  */
 
 const STORAGE_KEYS = {
-  VERSION: "eduschool_version_v1.0",
-  SCHOOL: "eduschool_school_data",
-  CURRENT_USER: "eduschool_current_user",
-  STUDENTS: "eduschool_students_data",
-  SUBJECTS: "eduschool_subjects_data",
-  LESSONS: "eduschool_lessons_data",
-  LESSON_PROGRESS: "eduschool_lesson_progress",
-  QUIZZES: "eduschool_quizzes_data",
-  QUIZ_RESULTS: "eduschool_quiz_results",
-  ATTENDANCE: "eduschool_attendance_data",
-  SCHEDULES: "eduschool_schedules_data",
-  ANNOUNCEMENTS: "eduschool_announcements_data"
+  VERSION: "smkalmadani_version_v1.0",
+  SCHOOL: "smkalmadani_school_data",
+  CURRENT_USER: "smkalmadani_current_user",
+  STUDENTS: "smkalmadani_students_data",
+  SUBJECTS: "smkalmadani_subjects_data",
+  LESSONS: "smkalmadani_lessons_data",
+  LESSON_PROGRESS: "smkalmadani_lesson_progress",
+  QUIZZES: "smkalmadani_quizzes_data",
+  QUIZ_RESULTS: "smkalmadani_quiz_results",
+  ATTENDANCE: "smkalmadani_attendance_data",
+  SCHEDULES: "smkalmadani_schedules_data",
+  ANNOUNCEMENTS: "smkalmadani_announcements_data"
 };
 
 const StorageManager = {

@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - CONTROLLER DASHBOARD SISWA
+ * SMK AL-MADANI GARUT - CONTROLLER DASHBOARD SISWA
  * Menghitung dan menyajikan data statistik riil, kemajuan belajar, jadwal hari ini,
  * kuis aktif, dan notifikasi kehadiran siswa.
  */

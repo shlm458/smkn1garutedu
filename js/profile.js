@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - USER PROFILE CONTROLLER
+ * SMK AL-MADANI GARUT - USER PROFILE CONTROLLER
  * Menampilkan detail profil pengguna (siswa atau guru), statistik aktivitas,
  * serta formulir edit profil yang tersimpan ke localStorage.
  */

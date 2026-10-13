@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - SCHEDULE CONTROLLER
+ * SMK AL-MADANI GARUT - SCHEDULE CONTROLLER
  * Menampilkan jadwal pelajaran mingguan, penanda otomatis hari ini,
  * serta filter hari untuk siswa dan guru.
  */

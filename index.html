@@ -79,12 +79,9 @@
     ========================= */
     .hero-section {
       padding: 90px 40px 80px;
-      max-width: 1280px;
+      max-width: 880px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 50px;
-      align-items: center;
+      text-align: center;
     }
 
     .hero-badge {
@@ -105,8 +102,8 @@
 
     .hero-title {
       font-family: var(--font-serif);
-      font-size: 3.2rem;
-      line-height: 1.15;
+      font-size: clamp(1.7rem, 4.4vw, 3.2rem);
+      line-height: 1.2;
       color: var(--text-dark);
       margin-bottom: 20px;
       font-weight: 700;
@@ -122,12 +119,28 @@
       color: var(--text-muted);
       line-height: 1.8;
       margin-bottom: 30px;
-      max-width: 560px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .hero-desc p {
+      margin: 0 0 10px;
+    }
+
+    .hero-desc h4 {
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      margin: 18px 0 8px;
     }
 
     .hero-ctas {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
     }
@@ -548,22 +561,19 @@
       <div>
        
 
-        <h1 class="hero-title "style="text-align : center">
-          Selamat Datang di
-          <span style="text-align :center ">SMK Al-Madani Garut<span>
-        </h1>
+        <h1 class="hero-title">Selamat Datang di <span>SMK Al-Madani Garut</span></h1>
 
-        <p class="hero-desc">
-        <h4 style="color : black " style ="font :bold">VISI</h4>
-          Terwujudnya lulusan yang berkompeten, mandiri, dan berakhlak mulia.
-        <h4 style="color : black " style ="font :bold">MISI</h4>
-          1. Mengembangkan kemampuan diri sesuai dengan kompetensi yang dimiliki sehingga mampu berkompentensi secara lokal maupun global. <br>
-          2. Mengembangkan penyelenggaraan pendidikan yang lebih kreatif dan inovatif.<br>
-          3. Membangun pribadi yang sesuai dengan nilai - nilai moral, keimanan, dan ketaqwaan kepada Allah SWT.
-        </p>
-        <br>
-        <br>
-        <br>
+        <div class="hero-desc">
+          <h4>VISI</h4>
+          <p>Terwujudnya lulusan yang berkompeten, mandiri, dan berakhlak mulia.</p>
+
+          <h4>MISI</h4>
+          <p>
+            1. Mengembangkan kemampuan diri sesuai dengan kompetensi yang dimiliki sehingga mampu berkompetensi secara lokal maupun global.<br>
+            2. Mengembangkan penyelenggaraan pendidikan yang lebih kreatif dan inovatif.<br>
+            3. Membangun pribadi yang sesuai dengan nilai - nilai moral, keimanan, dan ketaqwaan kepada Allah SWT.
+          </p>
+        </div>
 
         <div class="hero-ctas">
           <a href="login.html" class="btn btn-primary btn-lg">
@@ -792,7 +802,7 @@
               </svg>
             </div>
 
-            <span class="brand-text">SMKN 1 GARUT</span>
+            <span class="brand-text">SMK Al-Madani GARUT</span>
           </a>
 
           <p class="footer-description">
@@ -835,7 +845,7 @@
 
         <p>
           &copy; <span id="current-year">2026</span>
-          SMKN 1 Garut. Portal Pembelajaran Digital.
+          SMK Al-Madani Garut. Portal Pembelajaran Digital.
         </p>
 
         <a href="index.html"

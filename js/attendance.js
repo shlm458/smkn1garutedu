@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - ATTENDANCE CONTROLLER
+ * SMK AL-MADANI GARUT - ATTENDANCE CONTROLLER
  * Menangani simulasi presensi mandiri bagi siswa dengan pencegahan absensi ganda,
  * serta rekapitulasi, filter, dan modifikasi status kehadiran oleh guru.
  */

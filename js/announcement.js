@@ -1,5 +1,5 @@
 /**
- * SMKN 1 Garut - ANNOUNCEMENTS CONTROLLER
+ * SMK Al-Madani Garut - ANNOUNCEMENTS CONTROLLER
  * Menampilkan pengumuman resmi sekolah, filter kategori, status sudah/belum dibaca,
  * serta pembuatan pengumuman baru oleh guru.
  */

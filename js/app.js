@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - CORE APP UI & SHARED CONTROLLER
+ * SMK AL-MADANI GARUT - CORE APP UI & SHARED CONTROLLER
  * Menangani rendering sidebar adaptif, topbar dinamis, sistem toast notifikasi,
  * modal dialog universal, dan ikon SVG terpadu.
  */
@@ -192,7 +192,7 @@ const App = {
         </button>
         <div class="page-title-group">
           <div class="page-breadcrumb">
-            <span>EduSchool</span>
+            <span>SMK Al-Madani Garut</span>
             <span>/</span>
             <span style="color: var(--gold-dark); font-weight: 600;">${isGuru ? "Panel Guru" : "Portal Siswa"}</span>
           </div>

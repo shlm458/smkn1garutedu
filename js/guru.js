@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - CONTROLLER DASHBOARD GURU
+ * SMK AL-MADANI GARUT - CONTROLLER DASHBOARD GURU
  * Mengelola metrik pengajaran, rekap kelas, evaluasi hasil kuis siswa dummy,
  * dan tindakan cepat untuk pendidik.
  */

@@ -1,12 +1,12 @@
-# EduSchool — Website Pembelajaran Sekolah Modern & Elegan
+# SMK Al-Madani Garut — Website Pembelajaran Sekolah Modern & Elegan
 
-EduSchool adalah platform pembelajaran digital terpadu untuk siswa dan tenaga pendidik tingkat sekolah menengah (SMA/SMK). Dibangun menggunakan **HTML5, CSS3 murni, dan JavaScript murni** tanpa ketergantungan pada framework eksternal seperti React, Vue, Tailwind CSS, Bootstrap, maupun backend database server. Seluruh interaktivitas data dan perubahan status dikelola secara persisten melalui **Web Storage API (localStorage)** peramban.
+SMK Al-Madani Garut adalah platform pembelajaran digital terpadu untuk siswa dan tenaga pendidik tingkat sekolah menengah (SMA/SMK). Dibangun menggunakan **HTML5, CSS3 murni, dan JavaScript murni** tanpa ketergantungan pada framework eksternal seperti React, Vue, Tailwind CSS, Bootstrap, maupun backend database server. Seluruh interaktivitas data dan perubahan status dikelola secara persisten melalui **Web Storage API (localStorage)** peramban.
 
 ---
 
 ## 🎨 Identitas Visual & Estetika Desain
 
-EduSchool mengusung gaya **Modern Minimalis, Elegan, Premium, dengan sentuhan Old-Money**:
+SMK Al-Madani Garut mengusung gaya **Modern Minimalis, Elegan, Premium, dengan sentuhan Old-Money**:
 - **Putih Bersih (`#FFFFFF`)**: Bidang kartu dan permukaan utama.
 - **Off-white (`#F9F8F5`)**: Latar belakang halaman yang teduh dan nyaman di mata.
 - **Gold Utama (`#C5A253`)**: Aksen mewah terukur pada status, border aktif, dan indikator.
@@ -23,8 +23,8 @@ Akses sistem menggunakan simulasi autentikasi frontend yang tertera pada halaman
 
 | Peran | Nama Demonstrasi | Nomor Induk (NIS/NIP) | Email Demonstrasi | Kata Sandi Demo |
 | :--- | :--- | :--- | :--- | :--- |
-| **Siswa** | Ahmad Rizky Pratama | `20241001` | `rizky@eduschool.sch.id` | `siswa123` |
-| **Guru** | Dra. Sri Wahyuni, M.Kom. | `198305142008012005` | `sri.wahyuni@eduschool.sch.id` | `guru123` |
+| **Siswa** | Ahmad Rizky Pratama | `20241001` | `rizky@smkalmadani.sch.id` | `siswa123` |
+| **Guru** | Dra. Sri Wahyuni, M.Kom. | `198305142008012005` | `sri.wahyuni@smkalmadani.sch.id` | `guru123` |
 
 > **Pintasan Cepat:** Pada halaman `login.html`, tersedia tombol **"⚡ Masuk Instan sebagai Siswa Demo"** dan **"⚡ Masuk Instan sebagai Guru Demo"** untuk masuk dengan 1 klik tanpa harus mengetik manual. Pengguna juga dapat berganti peran secara instan melalui pill switcher di sidebar / topbar kapan saja.
 

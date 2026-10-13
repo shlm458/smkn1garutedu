@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - AUTHENTICATION & SESSION MANAGER
+ * SMK AL-MADANI GARUT - AUTHENTICATION & SESSION MANAGER
  * Mengelola sesi demonstrasi, pemilihan peran (Siswa/Guru), dan proteksi rute halaman.
  * Catatan: Ini adalah autentikasi demonstrasi frontend berbasis localStorage, bukan keamanan produksi.
  */

@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - SCHOOL PROFILE CONTROLLER
+ * SMK AL-MADANI GARUT - SCHOOL PROFILE CONTROLLER
  * Menampilkan identitas resmi sekolah, visi misi, profil kepala sekolah,
  * guru pendidik, fasilitas, program unggulan, dan prestasi dari schoolData terpusat.
  */

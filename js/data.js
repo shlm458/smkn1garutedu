@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - CENTRALIZED DEMO DATA STORE
+ * SMK AL-MADANI GARUT - CENTRALIZED DEMO DATA STORE
  * Seluruh data sekolah, pengguna demo, mata pelajaran, materi, kuis, absensi, jadwal, dan pengumuman.
  * Data di bawah dapat disesuaikan dan menjadi sumber awal (seed data) untuk localStorage.
  */
@@ -9,7 +9,7 @@ const DEFAULT_SCHOOL_DATA = {
   meta: {
     note: "Seluruh data sekolah ini adalah placeholder demonstrasi frontend. Ubah nilai objek ini jika data resmi sekolah tersedia."
   },
-  name: "SMA Unggulan EduSchool Nusantara",
+  name: "SMK Al-Madani Garut",
   tagline: "Membina Generasi Unggul, Berkarakter, dan Menguasai Teknologi Global",
   npsn: "10293847",
   accreditation: "A (Unggul) - BAN-SM 2023",
@@ -19,10 +19,10 @@ const DEFAULT_SCHOOL_DATA = {
     address: "Jl. Pendidikan Cendekia No. 45, Kompleks Prestasi, Jakarta 12340",
     phone: "(021) 7890-1234",
     whatsapp: "0812-3456-7890",
-    email: "kontak@eduschool.sch.id",
-    website: "https://eduschool.sch.id"
+    email: "kontak@smkalmadani.sch.id",
+    website: "https://smkalmadani.sch.id"
   },
-  history: `Didirikan pada tahun 2008, SMA Unggulan EduSchool Nusantara dirancang sebagai institusi pelopor yang mengintegrasikan keunggulan akademik klasik dengan kecakapan literasi digital masa depan. Melalui perjalanan lebih dari satu dekade, sekolah telah meluluskan ribuan cendekiawan muda yang berkiprah di universitas terkemuka dunia dan industri teknologi internasional.`,
+  history: `Didirikan pada tahun 2008, SMK Al-Madani Garut dirancang sebagai institusi pelopor yang mengintegrasikan keunggulan akademik klasik dengan kecakapan literasi digital masa depan. Melalui perjalanan lebih dari satu dekade, sekolah telah meluluskan ribuan cendekiawan muda yang berkiprah di universitas terkemuka dunia dan industri teknologi internasional.`,
   vision: "Menjadi institusi pendidikan teladan yang mencetak pemimpin berintegritas tinggi, berwawasan global, dan unggul dalam inovasi sains serta teknologi komputasi.",
   mission: [
     "Menyelenggarakan pembelajaran berbasis komputasi, analitika, dan nalar kritis yang adaptif terhadap revolusi industri.",
@@ -127,7 +127,7 @@ const DEFAULT_SCHOOL_DATA = {
     { title: "Sesi Diskusi Komputasional di Lab Komputer", category: "Akademik", tag: "Coding Lab" },
     { title: "Pameran Inovasi Proyek Sains dan Rekayasa", category: "Inovasi", tag: "Science Fair" },
     { title: "Sidang Presentasi Proyek Akhir Informatika", category: "Presentasi", tag: "Capstone Day" },
-    { title: "Perpustakaan Digital EduSchool yang Nyaman", category: "Fasilitas", tag: "Digital Library" }
+    { title: "Perpustakaan Digital SMK Al-Madani Garut yang Nyaman", category: "Fasilitas", tag: "Digital Library" }
   ]
 };
 
@@ -139,7 +139,7 @@ const DEFAULT_USERS = {
     name: "Ahmad Rizky Pratama",
     nis: "20241001",
     class: "X-Informatika 1",
-    email: "rizky@eduschool.sch.id",
+    email: "rizky@smkalmadani.sch.id",
     phone: "0812-3456-7890",
     avatar: "👨‍🎓",
     bio: "Siswa peminatan Informatika & Algoritma. Tertarik pada pemrograman sistem dan kecerdasan buatan.",
@@ -151,21 +151,21 @@ const DEFAULT_USERS = {
     name: "Dra. Sri Wahyuni, M.Kom.",
     nip: "198305142008012005",
     subject: "Informatika",
-    email: "sri.wahyuni@eduschool.sch.id",
+    email: "sri.wahyuni@smkalmadani.sch.id",
     phone: "0812-9876-5432",
     avatar: "👩‍🏫",
-    bio: "Pendidik Informatika Senior dengan pengalamanan riset komputasi 15 tahun. Koordinator Kurikulum Digital EduSchool.",
+    bio: "Pendidik Informatika Senior dengan pengalamanan riset komputasi 15 tahun. Koordinator Kurikulum Digital SMK Al-Madani Garut.",
     handledClasses: ["X-Informatika 1", "X-Informatika 2", "XI-Sains 1"]
   }
 };
 
 const DEFAULT_STUDENTS = [
-  { id: "usr-siswa-1", name: "Ahmad Rizky Pratama", nis: "20241001", class: "X-Informatika 1", email: "rizky@eduschool.sch.id", avatar: "👨‍🎓", scoreAvg: 88.5, attendanceRate: 95 },
-  { id: "usr-siswa-2", name: "Siti Aisyah Rahma", nis: "20241002", class: "X-Informatika 1", email: "aisyah@eduschool.sch.id", avatar: "👩‍🎓", scoreAvg: 92.0, attendanceRate: 98 },
-  { id: "usr-siswa-3", name: "Budi Santoso", nis: "20241003", class: "X-Informatika 1", email: "budi@eduschool.sch.id", avatar: "👨‍🎓", scoreAvg: 81.0, attendanceRate: 90 },
-  { id: "usr-siswa-4", name: "Cantika Dewi", nis: "20241004", class: "X-Informatika 1", email: "cantika@eduschool.sch.id", avatar: "👩‍🎓", scoreAvg: 89.5, attendanceRate: 96 },
-  { id: "usr-siswa-5", name: "Daffa Rayhan Putra", nis: "20241005", class: "X-Informatika 1", email: "daffa@eduschool.sch.id", avatar: "👨‍🎓", scoreAvg: 77.0, attendanceRate: 85 },
-  { id: "usr-siswa-6", name: "Eka Putri Lestari", nis: "20241006", class: "X-Informatika 1", email: "ekaputri@eduschool.sch.id", avatar: "👩‍🎓", scoreAvg: 94.0, attendanceRate: 100 }
+  { id: "usr-siswa-1", name: "Ahmad Rizky Pratama", nis: "20241001", class: "X-Informatika 1", email: "rizky@smkalmadani.sch.id", avatar: "👨‍🎓", scoreAvg: 88.5, attendanceRate: 95 },
+  { id: "usr-siswa-2", name: "Siti Aisyah Rahma", nis: "20241002", class: "X-Informatika 1", email: "aisyah@smkalmadani.sch.id", avatar: "👩‍🎓", scoreAvg: 92.0, attendanceRate: 98 },
+  { id: "usr-siswa-3", name: "Budi Santoso", nis: "20241003", class: "X-Informatika 1", email: "budi@smkalmadani.sch.id", avatar: "👨‍🎓", scoreAvg: 81.0, attendanceRate: 90 },
+  { id: "usr-siswa-4", name: "Cantika Dewi", nis: "20241004", class: "X-Informatika 1", email: "cantika@smkalmadani.sch.id", avatar: "👩‍🎓", scoreAvg: 89.5, attendanceRate: 96 },
+  { id: "usr-siswa-5", name: "Daffa Rayhan Putra", nis: "20241005", class: "X-Informatika 1", email: "daffa@smkalmadani.sch.id", avatar: "👨‍🎓", scoreAvg: 77.0, attendanceRate: 85 },
+  { id: "usr-siswa-6", name: "Eka Putri Lestari", nis: "20241006", class: "X-Informatika 1", email: "ekaputri@smkalmadani.sch.id", avatar: "👩‍🎓", scoreAvg: 94.0, attendanceRate: 100 }
 ];
 
 const DEFAULT_SUBJECTS = [
@@ -399,7 +399,7 @@ AKHIR_ALGORITMA
       <ul>
         <li><strong>Integer (Bilangan Bulat):</strong> Nilai angka tanpa desimal (misal: -10, 0, 42).</li>
         <li><strong>Float / Real (Bilangan Pecahan):</strong> Nilai angka berdesimal presisi (misal: 3.14, 0.005).</li>
-        <li><strong>String (Teks):</strong> Untaian karakter yang diapit tanda petik (misal: "EduSchool Indonesia").</li>
+        <li><strong>String (Teks):</strong> Untaian karakter yang diapit tanda petik (misal: "SMK Al-Madani Garut Indonesia").</li>
         <li><strong>Boolean (Kebenaran):</strong> Hanya memiliki dua kondisi pasti: <code>true</code> (benar) atau <code>false</code> (salah).</li>
       </ul>
 
@@ -530,7 +530,7 @@ console.log("Total genap:", total);
       <h4>Komponen dan Protokol Jaringan Vital:</h4>
       <ul>
         <li><strong>IP Address:</strong> Alamat numerik unik yang mengidentifikasi setiap perangkat di internet (IPv4 format 32-bit misal 192.168.1.1, dan IPv6 format 128-bit).</li>
-        <li><strong>DNS (Domain Name System):</strong> 'Buku telepon internet' yang menerjemahkan nama domain yang mudah diingat manusia (seperti <code>eduschool.sch.id</code>) menjadi IP address numerik mesin.</li>
+        <li><strong>DNS (Domain Name System):</strong> 'Buku telepon internet' yang menerjemahkan nama domain yang mudah diingat manusia (seperti <code>smkalmadani.sch.id</code>) menjadi IP address numerik mesin.</li>
         <li><strong>Protokol HTTP & HTTPS:</strong> Aturan baku transfer dokumen hiperteks pada World Wide Web. Huruf 'S' pada HTTPS menandakan adanya enkripsi <em>Transport Layer Security (TLS/SSL)</em>.</li>
         <li><strong>Arsitektur Client-Server:</strong> Client (seperti web browser di laptop siswa) mengirimkan permintaan (request), dan Server memproses lalu mengembalikan data respon (response).</li>
       </ul>
@@ -538,8 +538,8 @@ console.log("Total genap:", total);
     examples: `
       <div class="code-box">
         <strong>Perjalanan Saat Membuka Website:</strong><br>
-        1. Pengguna mengetik: "https://eduschool.sch.id"<br>
-        2. Browser bertanya ke Server DNS: "Berapa IP dari eduschool.sch.id?" -> DNS menjawab: "103.20.15.8"<br>
+        1. Pengguna mengetik: "https://smkalmadani.sch.id"<br>
+        2. Browser bertanya ke Server DNS: "Berapa IP dari smkalmadani.sch.id?" -> DNS menjawab: "103.20.15.8"<br>
         3. Browser membuat sambungan aman TLS ke 103.20.15.8 port 443.<br>
         4. Server mengembalikan berkas HTML, CSS, dan JavaScript ke browser.
       </div>
@@ -582,8 +582,8 @@ console.log("Total genap:", total);
     examples: `
       <div class="code-box">
         <strong>Pemeriksaan Tautan Phishing:</strong><br>
-        Resmi: https://accounts.eduschool.sch.id/login (Domain utama adalah eduschool.sch.id)<br>
-        Palsu: http://eduschool.sch.id.login-verifikasi.xyz (Domain aslinya adalah login-verifikasi.xyz, bukan eduschool!)
+        Resmi: https://accounts.smkalmadani.sch.id/login (Domain utama adalah smkalmadani.sch.id)<br>
+        Palsu: http://smkalmadani.sch.id.login-verifikasi.xyz (Domain aslinya adalah login-verifikasi.xyz, bukan smkalmadani!)
       </div>
     `,
     keyPoints: [
@@ -732,7 +732,7 @@ const DEFAULT_QUIZZES = [
       },
       {
         id: "q-8",
-        text: "Layanan pada jaringan internet yang bertugas menerjemahkan nama domain manusia (misal: eduschool.sch.id) menjadi alamat numerik IP Address adalah...",
+        text: "Layanan pada jaringan internet yang bertugas menerjemahkan nama domain manusia (misal: smkalmadani.sch.id) menjadi alamat numerik IP Address adalah...",
         options: [
           "A. DHCP (Dynamic Host Configuration Protocol)",
           "B. DNS (Domain Name System)",
@@ -953,7 +953,7 @@ const DEFAULT_ANNOUNCEMENTS = [
     date: "11 Oktober 2024",
     author: "Wakil Kepala Sekolah Bidang Akademik",
     read: false,
-    content: "Diberitahukan kepada seluruh siswa kelas X dan XI bahwa Evaluasi Tengah Semester (ETS) akan diselenggarakan serentak secara digital pada tanggal 21-25 Oktober 2024. Harap mempersiapkan akun EduSchool dan menyelesaikan modul prasyarat."
+    content: "Diberitahukan kepada seluruh siswa kelas X dan XI bahwa Evaluasi Tengah Semester (ETS) akan diselenggarakan serentak secara digital pada tanggal 21-25 Oktober 2024. Harap mempersiapkan akun SMK Al-Madani Garut dan menyelesaikan modul prasyarat."
   },
   {
     id: "anc-02",
@@ -969,7 +969,7 @@ const DEFAULT_ANNOUNCEMENTS = [
     title: "Pemeliharaan Jaringan Server Lab Komputasi Utama",
     category: "Fasilitas",
     date: "04 Oktober 2024",
-    author: "Tim IT Support EduSchool",
+    author: "Tim IT Support SMK Al-Madani Garut",
     read: true,
     content: "Akan dilakukan upgrade firmware saklar gigabit dan pemeliharaan pendingin ruang server pada hari Sabtu pukul 14:00 - 18:00 WIB. Selama durasi tersebut, akses server lokal akan mengalami penurunan kecepatan sesaat."
   }

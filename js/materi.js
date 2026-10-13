@@ -1,5 +1,5 @@
 /**
- * EDUSCHOOL - CONTROLLER MATERI & KURIKULUM
+ * SMK AL-MADANI GARUT - CONTROLLER MATERI & KURIKULUM
  * Menangani pembacaan modul pembelajaran terstruktur untuk siswa,
  * penandaan status selesai (progress tracking), navigasi antar-modul,
  * serta aksi CRUD (Tambah, Edit, Hapus) materi lengkap untuk guru.
